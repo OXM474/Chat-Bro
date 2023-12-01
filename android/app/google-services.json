@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "464369909664",
+    "project_id": "chat-bro-603f3",
+    "storage_bucket": "chat-bro-603f3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:464369909664:android:e39fa33da65fde6e302ec5",
+        "android_client_info": {
+          "package_name": "com.example.messager_chat_1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "464369909664-kbkpjvc7ojm67j3u8lnhh0kn92btl2ss.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.messager_chat_1",
+            "certificate_hash": "8d34ced6b9f697fd4abff38596d9ce57b71d0e9a"
+          }
+        },
+        {
+          "client_id": "464369909664-rm0dp0vip6p829cubqtcemeor6l37jm9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0oYFqfR1XMaskugZKlEDClT5oe4kYUMI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "464369909664-rm0dp0vip6p829cubqtcemeor6l37jm9.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "464369909664-rmekdjsn78ckuk2q8svqnlg74g9t9tdt.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.messagerChat1"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
