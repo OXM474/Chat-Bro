@@ -65,6 +65,7 @@ class _SearchPageState extends State<SearchPage> {
               children: [
                 Expanded(
                   child: TextField(
+                    autofocus: true,
                     cursorColor: Colors.blue,
                     controller: searchController,
                     style: const TextStyle(color: Colors.white),
@@ -73,6 +74,9 @@ class _SearchPageState extends State<SearchPage> {
                         hintText: "Search groups....",
                         hintStyle:
                             TextStyle(color: Colors.white, fontSize: 16)),
+                    onSubmitted: (value) {
+                      initiateSearchMethod();
+                    },
                   ),
                 ),
                 IconButton(
@@ -178,7 +182,7 @@ class _SearchPageState extends State<SearchPage> {
             });
             if (context.mounted) {
               showSnackbar(
-                  context, Colors.green, "Successfully joined he group");
+                  context, Colors.green, "Successfully joined the group");
             }
             Future.delayed(const Duration(seconds: 2), () {
               Navigator.push(

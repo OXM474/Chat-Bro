@@ -93,6 +93,7 @@ class _LoginPageState extends State<LoginPage> {
                   Container(
                     margin: const EdgeInsets.only(left: 40, right: 40, top: 20),
                     child: TextField(
+                      autofocus: true,
                       cursorColor: Colors.blue,
                       controller: useremail,
                       decoration: textInputDecoration.copyWith(

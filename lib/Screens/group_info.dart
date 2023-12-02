@@ -50,8 +50,7 @@ class _GroupInfoState extends State<GroupInfo> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        elevation: 0,
-        backgroundColor: Theme.of(context).primaryColor,
+        backgroundColor: Theme.of(context).canvasColor,
         title: const Text("Group Info"),
         actions: [
           IconButton(
@@ -105,9 +104,9 @@ class _GroupInfoState extends State<GroupInfo> {
                       );
                     });
               },
-              icon: const Icon(
+              icon: Icon(
                 Icons.exit_to_app,
-                color: Colors.black,
+                color: Theme.of(context).disabledColor,
               ))
         ],
       ),

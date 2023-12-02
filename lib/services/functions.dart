@@ -92,6 +92,7 @@ class DatabaseFunctions {
       "groupId": "",
       "recentMessage": "",
       "recentMessageSender": "",
+      'time': FieldValue.serverTimestamp(),
     });
 
     await groupDocumentReference.update({

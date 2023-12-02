@@ -234,6 +234,7 @@ class _HomeState extends State<Home> {
         tooltip: 'Create Group',
         onPressed: () {
           popUpGroupCreate(context);
+          groupName.clear();
         },
         elevation: 0,
         backgroundColor: Theme.of(context).disabledColor,
@@ -248,10 +249,11 @@ class _HomeState extends State<Home> {
 
   popUpGroupCreate(BuildContext context) {
     showDialog(
-        barrierDismissible: false,
-        context: context,
-        builder: (context) {
-          return StatefulBuilder(builder: ((context, setState) {
+      barrierDismissible: false,
+      context: context,
+      builder: (context) {
+        return StatefulBuilder(
+          builder: ((context, setState) {
             return AlertDialog(
               title: const Text(
                 "Create a group",
@@ -266,9 +268,12 @@ class _HomeState extends State<Home> {
                               color: Theme.of(context).disabledColor),
                         )
                       : TextField(
+                          autofocus: true,
                           controller: groupName,
-                          style: const TextStyle(color: Colors.black),
+                          style: const TextStyle(
+                              color: Color.fromARGB(255, 185, 33, 100)),
                           decoration: InputDecoration(
+                              hintText: 'Group Name',
                               enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
                                       color: Theme.of(context).disabledColor),
@@ -281,6 +286,26 @@ class _HomeState extends State<Home> {
                                   borderSide: BorderSide(
                                       color: Theme.of(context).disabledColor),
                                   borderRadius: BorderRadius.circular(20))),
+                          onSubmitted: (value) async {
+                            if (groupName.text != "") {
+                              setState(() {
+                                _isLoading = true;
+                              });
+                              DatabaseFunctions(
+                                      uid: FirebaseAuth
+                                          .instance.currentUser!.uid)
+                                  .createGroup(
+                                      userName,
+                                      FirebaseAuth.instance.currentUser!.uid,
+                                      groupName.text)
+                                  .whenComplete(() {
+                                _isLoading = false;
+                              });
+                              Navigator.of(context).pop();
+                              showSnackbar(context, Colors.green,
+                                  "Group created successfully.");
+                            }
+                          },
                         ),
                 ],
               ),
@@ -288,6 +313,7 @@ class _HomeState extends State<Home> {
                 ElevatedButton(
                   onPressed: () {
                     Navigator.of(context).pop();
+                    groupName.clear();
                   },
                   style: ElevatedButton.styleFrom(
                       backgroundColor: Theme.of(context).disabledColor),
@@ -329,8 +355,10 @@ class _HomeState extends State<Home> {
                 )
               ],
             );
-          }));
-        });
+          }),
+        );
+      },
+    );
   }
 
   groupList() {
@@ -378,6 +406,7 @@ class _HomeState extends State<Home> {
           GestureDetector(
             onTap: () {
               popUpGroupCreate(context);
+              groupName.clear();
             },
             child: Icon(
               Icons.add_circle,
